@@ -70,8 +70,8 @@ subprojects { subproject ->
 	jacoco { toolVersion = "0.7.0.201403182114" }
 
 	compileJava {
-		sourceCompatibility=1.7
-		targetCompatibility=1.7
+		sourceCompatibility=1.8
+		targetCompatibility=1.8
 	}
 
 	eclipse {
@@ -208,7 +208,7 @@ project('IoT-CarSimulator') {
         compile "com.fasterxml.jackson.core:jackson-databind"
         compile "org.springframework.boot:spring-boot-autoconfigure"
 		testCompile("org.mockito:mockito-core") {
-		exclude group:'org.hamcrest', module:'hamcrest-core'
+			exclude group:'org.hamcrest', module:'hamcrest-core'
 		}
 		compile "org.hsqldb:hsqldb"
 		testCompile("junit:junit") {

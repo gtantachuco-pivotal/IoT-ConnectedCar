@@ -140,7 +140,9 @@ public class LoaderJobConfiguration {
 	@Bean
 	@SuppressWarnings("unchecked")
 	public LineTokenizer jsonLineTokenzier() {
-		return line -> {
+		return new LineTokenizer() {
+			public FieldSet tokenize(String line) {
+	//	return line -> {
 			List<String> tokens = new ArrayList<>();
 
 			try {
@@ -182,6 +184,7 @@ public class LoaderJobConfiguration {
 			String[] fields = Field.herbieFields();
 			return new DefaultFieldSet(tokens.toArray(new String[tokens.size() - 1]),
 					Arrays.copyOfRange(fields, 0, fields.length - 1));
+			}
 		};
 	}
 
@@ -296,7 +299,9 @@ public class LoaderJobConfiguration {
 	@StepScope
 	public ItemProcessor<Map<String, Object>, String> processor(
 			@Value("#{jobParameters['delay']}")final long delay) {
-		return item -> {
+		return new ItemProcessor<Map<String, Object>, String>() {
+			public String process(Map<String, Object> item) throws Exception {
+//		return item -> {
 			DefaultSerializerProvider provider = new DefaultSerializerProvider.Impl();
 
 			provider.setNullValueSerializer(new JsonSerializer<Object>() {
@@ -326,6 +331,7 @@ public class LoaderJobConfiguration {
 			Thread.sleep(delay);
 
 			return processedItem;
+			}
 		};
 	}
 

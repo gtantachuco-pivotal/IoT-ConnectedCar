@@ -36,7 +36,10 @@ public class GatewayItemWriter implements ItemWriter<String>, InitializingBean {
 
 	@Override
 	public void write(List<? extends String> items) throws Exception {
-		items.forEach(gateway::send);
+		for(String item : items) {
+			gateway.send(item);
+		}
+		//items.forEach(gateway::send);
 	}
 
 	@Override

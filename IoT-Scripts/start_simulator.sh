@@ -35,16 +35,16 @@ function selectInputFile {
 	
 	case $selection in
 		1)
-		inputfile="/opt/pivotal/data/Dallas-Drives/Ren-Omni-75.out"
+		inputfile="/home/azureuser/IoT-ConnectedCar/data/Dallas-Drives/Ren-Omni-75.out"
 		;;
 		2)
-		inputfile="/opt/pivotal/data/Dallas-Drives/Ren-Fly-BeltlineRoute.out"
+		inputfile="/home/azureuser/IoT-ConnectedCar/data/Dallas-Drives/Ren-Fly-BeltlineRoute.out"
 		;;
 		3)
-		inputfile="/opt/pivotal/data/Dallas-Drives/Ren-Babes-JupiterCampbellRoute.out"
+		inputfile="/home/azureuser/IoT-ConnectedCar/data/Dallas-Drives/Ren-Babes-JupiterCampbellRoute.out"
 		;;
 		4)
-		inputfile="/opt/pivotal/data/Dallas-Drives/Ren-Sandy-GBTollwayRoute.out"
+		inputfile="/home/azureuser/IoT-ConnectedCar/data/Dallas-Drives/Ren-Sandy-GBTollwayRoute.out"
 		;;
 	esac
 	
@@ -54,6 +54,7 @@ function selectInputFile {
 function runSimulation {
 	echo "Running simulation #$selection - $inputfile"
 	java -jar $IOT_HOME/IoT-CarSimulator/build/libs/IoT-CarSimulator.jar inputFile=$inputfile delay=1000
+	#java -jar $IOT_HOME/IoT-CarSimulator/build/libs/IoT-CarSimulator.jar inputFile=$inputfile delay=5
 	return $?
 }
 
